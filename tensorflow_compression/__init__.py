@@ -20,7 +20,8 @@ from __future__ import print_function as _print_function
 
 try:
   import tensorflow as _tensorflow
-  _tf_version = [int(v) for v in _tensorflow.version.VERSION.split(".")]
+  _tf_version = _tensorflow.version.VERSION.split("-")[0]
+  _tf_version = [int(v) for v in _tf_version]
   assert _tf_version[0] == 1 and _tf_version[1] >= 14
 except (ImportError, AssertionError):
   raise RuntimeError("For tensorflow_compression, please install TensorFlow "
